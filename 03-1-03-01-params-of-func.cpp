@@ -30,6 +30,12 @@ constexpr int getSize() {
 constexpr int foo = getSize();
 
 
+// 函数参数默认值
+int add(int x = 5, int y = 6) {
+    return x + y;
+}
+
+
 int main() {
     int i = 5;
     // 引用类型变量
@@ -45,6 +51,10 @@ int main() {
     // 调用plus函数
     i = callPlus(1, 1);
     cout << i << endl;
+
+
+    cout << "foo: " << foo << endl;
+    cout << "add" << add() << endl;
     return 0;
 }
 
