@@ -11,8 +11,8 @@ struct Person {
     string name; // 共有成员
     char sex;
 
-    // protected:
-    //     int age;
+//     protected: // 好像只能定义public的属性，有protected、private的属性的话，在初始化时会报错。
+//         int age;
     
     // private:
     //     string idCard;
@@ -23,8 +23,10 @@ struct Person {
 
 int main() {
     Person p1 = {"张3", '1'};
-    // p1.name = "张3";
-    // p1.sex = '0';
+//     p1.name = "张5";
+//     p1.sex = '0';
+    cout << p1.name << endl;
+    cout << p1.sex << endl;
 
     return 0;
 }
