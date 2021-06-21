@@ -108,6 +108,68 @@
 
 
 
+### 继承与派生
+
+* 继承与派生是同一过程从不同的角度看
+  * 保持已有类的特性而构造新类的过程称为继承
+  * 在已有类的基础上新增自己的特性而产生新类的过程称为派生
 
 
+单继承时派生类的定义
+
+```
+class 派生类名: 继承方式 基类名 {
+  成员声明;
+}
+
+例如
+class Derived: public Base {
+  public:
+    Derived();
+    ~Derived();
+};
+```
+
+多继承时派生类的定义
+
+```
+语法
+
+class 派生类名: 继承方式1 基类名1, 继承方式2 基类名2, ...
+{
+  成员声明;
+}
+
+
+注意： 每一个“继承方式”，只用于限制对紧随其后之基类的继承。
+
+例如:
+class Derived: public Base1, private Base2 {
+  public:
+    Derived();
+    ~Derived();
+};
+```
+
+* 共有继承(public)
+  * 继承的访问控制
+    * 基类的public和protected成员：访问属性在派生类中保持不变
+    * 基类的private成员：不可直接访问
+  * 访问权限
+    * 派生类中的成员函数：可以直接访问基类中的public和protected成员，但不能直接访问基类的private成员
+    * 通过派生类的对象：只能访问public成员
+* 私有继承（private）
+  * 继承的访问控制
+    * 基类的public和protected成员: 都已private身份出现在派生类中；
+    * 基类的private成员: 不可直接访问
+  * 访问权限
+    * 派生类中成员函数: 可以直接访问基类中的public和protected成员，但不能直接访问基类中的private成员
+    * 通过派生类的对象: 不能直接访问从基类继承的任何成员
+* 保护继承（protected）
+  * 继承的访问控制
+    * 基类的public和protected成员: 都以protected身份出现在派生类中
+    * 基类的private成员: 不可直接访问
+  * 访问权限
+    * 派生类中的成员函数： 可以直接访问基类中的public和protected成员，但不能直接访问private成员
+    * 通过派生类的对象：不能直接访问从基类继承的任何成员
 
