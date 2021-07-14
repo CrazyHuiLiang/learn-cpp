@@ -151,6 +151,12 @@ class Derived: public Base1, private Base2 {
 };
 ```
 
+不同继承方式的影响主要体现在：
+* 派生类`成员`对基类成员的访问权限
+* 通过派生类`对象`对基类成员的访问权限
+
+
+
 * 共有继承(public)
   * 继承的访问控制
     * 基类的public和protected成员：访问属性在派生类中保持不变
@@ -160,7 +166,7 @@ class Derived: public Base1, private Base2 {
     * 通过派生类的对象：只能访问public成员
 * 私有继承（private）
   * 继承的访问控制
-    * 基类的public和protected成员: 都已private身份出现在派生类中；
+    * 基类的public和protected成员: 都以private身份出现在派生类中；
     * 基类的private成员: 不可直接访问
   * 访问权限
     * 派生类中成员函数: 可以直接访问基类中的public和protected成员，但不能直接访问基类中的private成员
@@ -172,4 +178,14 @@ class Derived: public Base1, private Base2 {
   * 访问权限
     * 派生类中的成员函数： 可以直接访问基类中的public和protected成员，但不能直接访问private成员
     * 通过派生类的对象：不能直接访问从基类继承的任何成员
+
+
+类型转换
+
+* 共有派生类对象可以被当做基类的对象使用，反之则不可
+  * 派生类的对象可以隐含转换为基类对象
+  * 派生类的对象可以初始化基类的引用
+  * 派生类的指针可以隐含转换为基类的指针
+* 通过基类对象名、指针只能使用从基类继承的成员
+
 
