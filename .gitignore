@@ -32,3 +32,5 @@
 *.app
 *.dSYM
 
+.vs
+out/
