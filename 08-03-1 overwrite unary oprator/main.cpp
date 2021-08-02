@@ -4,11 +4,8 @@
 操作数是时钟类的对象
 实现时间增加1秒钟
 */
-
-#pragma once
 #include <iostream>
 using namespace std;
-
 
 class Clock
 {
@@ -18,9 +15,9 @@ public:
     Clock(int hour=0, int minute=0, int second=0);
     void showTime() const;
     // 前置单目运算符重载
-    Clock& operator ++();
+    Clock operator ++();
     // 后置单目运算符重载
-    Clock& operator ++(int);
+    Clock operator ++(int);
     ~Clock();
 };
 
@@ -40,7 +37,7 @@ void Clock::showTime() const {
     cout << hour << ":" << minute << ":" << second << endl;
 }
 
-Clock& Clock::operator ++() {
+Clock Clock::operator ++() {
     second++;
     if(60 <= second) {
         second -= 60;
@@ -55,7 +52,7 @@ Clock& Clock::operator ++() {
     return *this;
 }
 
-Clock& Clock::operator ++(int) {
+Clock Clock::operator ++(int) {
     Clock old = *this;
     ++(*this); // 调用前置"++"运算符
     return old;
@@ -63,22 +60,21 @@ Clock& Clock::operator ++(int) {
 
 Clock::~Clock()
 {
-    // cout << "desctructor: " << *this;
+    cout << "desctructor: " << this  << endl;
 }
 
 
 int main() {
     
     Clock myClock(23, 59, 59);
-    cout << "First time output:";
+    cout << "First time output:" << endl;
     myClock.showTime();
 
-    cout << "Show myClock++:";
+    cout << "Show myClock++:" << endl;
     (myClock++).showTime();
 
-    cout << "Show ++myClock:";
+    cout << "Show ++myClock:" << endl;
     (++myClock).showTime();
-
 
     return 0;
 }
